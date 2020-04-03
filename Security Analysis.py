@@ -25,10 +25,12 @@ def swapPositions(list, pos1, pos2):
 # This function generate all possible swapping error list of a PIN
 def swapErrors(List):
     print(List)
-    for j in range(3):
+    for j in range(len(List)-1):
         A.add(swapPositions(List,j,j+1))
         A.add(swapPositions(List,0,0))
     return A
+
+
 
 
 #This function return all n-element subsets of the set "S"
@@ -40,10 +42,15 @@ def findsubsets(s, n):
 # Let's start for the case of 3 digits PIN's
 num3=[]
 for num in range(1000):
-    print(pin_rep(num,3))
     num3.append(pin_rep(num,3))
-print(num3)
-print(len(num3))
+#print(type(list(num3[0])))
+
+
+print("This is the list of all errors for 3 digits PIN")
+#for j in range(10):
+#    print(j, swapErrors(list(num3[j])))
+j=998
+print(num3[j],"==========",swapErrors(list(num3[j])))
 
 #
 #
