@@ -31,6 +31,16 @@ def swapErrors(List):
     return A
 
 
+Wrong=[]
+#This function generate all possible errors for just one wrong digit
+def WrongDigitErrors(List,i):
+    for j in range(10):
+        List[i]=j
+
+
+
+
+
 
 
 #This function return all n-element subsets of the set "S"
