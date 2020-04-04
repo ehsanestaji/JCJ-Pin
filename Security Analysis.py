@@ -1,5 +1,7 @@
 # First Version
-A=set()
+Swap=set()
+WrongDigit=set()
+
 
 # k is the length of PIN and num is the Number
 # This function takes a number and the length of Pin and then output Pin representation of this number as a tuple
@@ -26,16 +28,25 @@ def swapPositions(list, pos1, pos2):
 def swapErrors(List):
     print(List)
     for j in range(len(List)-1):
-        A.add(swapPositions(List,j,j+1))
-        A.add(swapPositions(List,0,0))
-    return A
+        Swap.add(swapPositions(List,j,j+1))
+        Swap.add(swapPositions(List,0,0))
+    return Swap
 
 
-Wrong=[]
 #This function generate all possible errors for just one wrong digit
 def WrongDigitErrors(List,i):
     for j in range(10):
         List[i]=j
+        WrongDigit.add(tuple(List))
+    return WrongDigit
+
+def WrongDigitErrorFull(List):
+    for j in range(len(List)):
+        WrongDigitErrors(List,j)
+    return WrongDigit
+
+print(len(WrongDigitErrorFull([1,1,0,1])))
+
 
 
 
@@ -60,7 +71,7 @@ print("This is the list of all errors for 3 digits PIN")
 #for j in range(10):
 #    print(j, swapErrors(list(num3[j])))
 j=998
-print(num3[j],"==========",swapErrors(list(num3[j])))
+#print(num3[j],"==========",swapErrors(list(num3[j])))
 
 #
 #
