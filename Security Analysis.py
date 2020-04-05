@@ -31,9 +31,6 @@ def swapErrors(List):
     for j in range(len(List)-1):
         Swap.add(swapPositions(List,j,j+1))
         Swap.add(swapPositions(List,0,0))
-    #print("<<<<<===============================================>>>>>")
-    #print("Here is the list of all PIN's with sequential errors ")
-    #print(Swap)
     return Swap
 
 
@@ -45,20 +42,10 @@ def WrongDigitErrors(List,i):
         WrongDigit.add(tuple(new_list))
     return WrongDigit
 
-#print(WrongDigitErrors([1,2,3,4],0))
-
-
-
-
 
 def WrongDigitErrorFull(List):
     for j in range(len(List)):
-        #print(j,"====",WrongDigit, len(WrongDigit),type(WrongDigit))
         WrongDigitErrors(List,j)
-        #WrongDigit.add(WrongDigitErrors(List,j))
-    #print("<<<<<===============================================>>>>>")
-    #print("Here is the list of all PIN's with just one wrong digit ")
-    #print(WrongDigit)
     return WrongDigit
 
 
@@ -67,20 +54,7 @@ def PinSpan(List):
 
 
 
-print(PinSpan([1,2,3]))
-
-
-#def PinErrorList(List):
- #   return WrongDigitErrorFull(List).union(swapErrors(List))
-
-
-
-
-
-
-
-
-
+print(PinSpan([1,2,3,4,5]))
 
 
 
@@ -94,18 +68,4 @@ def findsubsets(s, n):
 num3=[]
 for num in range(1000):
     num3.append(pin_rep(num,3))
-#print(type(list(num3[0])))
-
-
-#print("This is the list of all errors for 3 digits PIN")
-#for j in range(10):
-#    print(j, swapErrors(list(num3[j])))
-#j=998
-#print(num3[j],"==========",swapErrors(list(num3[j])))
-
-#
-#
-#
-#
-#
 
