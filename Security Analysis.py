@@ -3,6 +3,7 @@ import copy
 Swap=set()
 WrongDigit=set()
 WrongList=set()
+new_WrongDigit=set()
 
 
 # k is the length of PIN and num is the Number
@@ -31,7 +32,9 @@ def swapErrors(List):
     for j in range(len(List)-1):
         Swap.add(swapPositions(List,j,j+1))
         Swap.add(swapPositions(List,0,0))
-    return Swap
+    new_Swap=copy.deepcopy(Swap)
+    Swap.clear()
+    return new_Swap
 
 
 #This function generate all possible errors for just one wrong digit
@@ -40,32 +43,57 @@ def WrongDigitErrors(List,i):
     for j in range(10):
         new_list[i]=j
         WrongDigit.add(tuple(new_list))
-    return WrongDigit
-
+    #WrongDigit.clear()
+    return new_WrongDigit
 
 def WrongDigitErrorFull(List):
-    for j in range(len(List)):
-        WrongDigitErrors(List,j)
+    new_list = copy.deepcopy(List)
+    for i in range(len(new_list)):
+        WrongDigitErrors(new_list,i)
     return WrongDigit
 
-
 def PinSpan(List):
-    return swapErrors(List).union(WrongDigitErrorFull(List))
+    new_list = copy.deepcopy(List)
+    WrongDigit.clear()
+    return swapErrors(new_list).union(WrongDigitErrorFull(new_list))
 
 
 
-print(PinSpan([1,2,3,4,5]))
 
 
-
-#This function return all n-element subsets of the set "S"
 import itertools
 def findsubsets(s, n):
     return list(itertools.combinations(s, n))
 
+w=findsubsets({1,2,3},2)
+print(PinSpan([1,2,3]),len(PinSpan([1,2,3])))
+print(PinSpan([2,5,4]),len(PinSpan([2,5,4])))
+print(PinSpan([6,7]),len(PinSpan([6,7])))
+
+
+
+
+
+
+
+
+
+#print(PinSpan([1,2,3,4,5]))
+
+
+
+#This function return all n-element subsets of the set "S"
+
+
 
 # Let's start for the case of 3 digits PIN's
 num3=[]
-for num in range(1000):
-    num3.append(pin_rep(num,3))
+for num in range(100):
+    num3.append(pin_rep(num,2))
 
+#print(list(num3))
+
+
+
+#for j in range(len(w)):
+ #   print(w[j],"==========" ,PinSpan(list(w[j])), len(PinSpan(list(w[j]))))
