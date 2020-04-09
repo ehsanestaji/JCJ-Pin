@@ -65,12 +65,34 @@ import itertools
 def findsubsets(s, n):
     return list(itertools.combinations(s, n))
 
-w=findsubsets({1,2,3},2)
-print(PinSpan([1,2,3]),len(PinSpan([1,2,3])))
-print(PinSpan([2,5,4]),len(PinSpan([2,5,4])))
-print(PinSpan([6,7]),len(PinSpan([6,7])))
+
+num_elements=[]
+for num in range(100):
+    num_elements.append(pin_rep(num,2))
 
 
+
+
+#w=findsubsets({1,2,3},2)
+#print(num_elements)
+w=findsubsets(num_elements,3)
+
+
+def ListPinSpan(List):
+    A=set()
+    for j in range(len(List)):
+        A = A.union(PinSpan(list(List[j])))
+    if len(A)>=100:
+        return True
+    else:
+        False
+    #print("The final set is ", A,"====", len(A))
+
+for j in range(len(w)):
+    if ListPinSpan(w[j]):
+        print("The set ",w[j], "is a good choice for adversary")
+        break
+print("No Good set was found")
 
 
 
@@ -79,21 +101,9 @@ print(PinSpan([6,7]),len(PinSpan([6,7])))
 
 
 #print(PinSpan([1,2,3,4,5]))
-
-
-
 #This function return all n-element subsets of the set "S"
-
-
-
 # Let's start for the case of 3 digits PIN's
-num3=[]
-for num in range(100):
-    num3.append(pin_rep(num,2))
 
 #print(list(num3))
-
-
-
 #for j in range(len(w)):
  #   print(w[j],"==========" ,PinSpan(list(w[j])), len(PinSpan(list(w[j]))))
