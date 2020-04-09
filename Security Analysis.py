@@ -1,15 +1,15 @@
 # First Version
 import copy
-Swap=set()
-WrongDigit=set()
-WrongList=set()
-new_WrongDigit=set()
+Swap = set()
+WrongDigit = set()
+WrongList = set()
+new_WrongDigit = set()
 
 
 # k is the length of PIN and num is the Number
 # This function takes a number and the length of Pin and then output Pin representation of this number as a tuple
 # We use tuple to be able use add method
-def pin_rep(num,k):
+def pin_rep( num , k):
     res = list(map(int, str(num)))
     for i in range(k-len(res)):
         res.insert(0,0)
@@ -43,7 +43,6 @@ def WrongDigitErrors(List,i):
     for j in range(10):
         new_list[i]=j
         WrongDigit.add(tuple(new_list))
-    #WrongDigit.clear()
     return new_WrongDigit
 
 def WrongDigitErrorFull(List):
@@ -72,9 +71,6 @@ for num in range(100):
 
 
 
-
-#w=findsubsets({1,2,3},2)
-#print(num_elements)
 w=findsubsets(num_elements,3)
 
 
@@ -86,7 +82,6 @@ def ListPinSpan(List):
         return True
     else:
         False
-    #print("The final set is ", A,"====", len(A))
 
 for j in range(len(w)):
     if ListPinSpan(w[j]):
@@ -98,12 +93,3 @@ print("No Good set was found")
 
 
 
-
-
-#print(PinSpan([1,2,3,4,5]))
-#This function return all n-element subsets of the set "S"
-# Let's start for the case of 3 digits PIN's
-
-#print(list(num3))
-#for j in range(len(w)):
- #   print(w[j],"==========" ,PinSpan(list(w[j])), len(PinSpan(list(w[j]))))
