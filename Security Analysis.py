@@ -5,6 +5,9 @@ WrongDigit = set()
 WrongList = set()
 new_WrongDigit = set()
 
+from tqdm import tqdm
+from time import sleep
+
 
 # k is the length of PIN and num is the Number
 # This function takes a number and the length of Pin and then output Pin representation of this number as a tuple
@@ -69,10 +72,7 @@ num_elements=[]
 for num in range(100):
     num_elements.append(pin_rep(num,2))
 
-
-
 w=findsubsets(num_elements,3)
-
 
 def ListPinSpan(List):
     A=set()
@@ -81,15 +81,10 @@ def ListPinSpan(List):
     if len(A)>=100:
         return True
     else:
-        False
+        return False
 
-for j in range(len(w)):
+for j in tqdm(range(len(w))):
+    #print(j, " of ", len(w))
     if ListPinSpan(w[j]):
         print("The set ",w[j], "is a good choice for adversary")
         break
-print("No Good set was found")
-
-
-
-
-
