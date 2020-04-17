@@ -34,6 +34,10 @@ def swapErrors(List):
     Swap.clear()
     return new_Swap
 
+
+
+
+
 #This function generate all possible errors for just one wrong digit
 def WrongDigitErrors(List,i):
     new_list = copy.deepcopy(List)
@@ -62,9 +66,11 @@ for num in range(100):
     num_elements.append(pin_rep(num,2))
 
 
+
+
 print(num_elements)
-w=findsubsets(num_elements,3)
-print(len(w))
+w=findsubsets(num_elements,)
+#print(len(w))
 
 def ListPinSpan(List):
     A=set()

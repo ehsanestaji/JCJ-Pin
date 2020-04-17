@@ -10,6 +10,7 @@ from time import sleep
 # k is the length of PIN and num is the Number
 # This function takes a number and the length of Pin and then output Pin representation of this number as a tuple
 # We use tuple to be able use add method
+
 def pin_rep( num , k):
     res = list(map(int, str(num)))
     for i in range(k-len(res)):
@@ -53,13 +54,22 @@ def PinSpan(List):
     WrongDigit.clear()
     return swapErrors(new_list).union(WrongDigitErrorFull(new_list))
 
+#print("=====",PinSpan([1,2,3]),"=====", len(PinSpan([1,2,3])))
+
+
+
 import itertools
 def findsubsets(s, n):
     return list(itertools.combinations(s, n))
 
+######## Here we declare the length of PINs
+k=2
+#######
+
+
 num_elements=[]
-for num in range(10000):
-    num_elements.append(pin_rep(num,4))
+for num in range(10**k):
+    num_elements.append(pin_rep(num,k))
 
 
 #print(num_elements)
@@ -74,18 +84,31 @@ def ListPinSpan(List):
     A=set()
     for j in range(len(List)):
         A = A.union(PinSpan(list(List[j])))
-    print(len(A))
-    if len(A)>=10000:
+    #print(len(A))
+    if len(A)>=10**k:
         return True
     else:
         return False
 
 
-for j in tqdm(range(100)):
-    w = sample(num_elements, 1600)
-    print(w)
-    print("====================","======================")
-    if ListPinSpan(w):
-        print("The set ",w, "is a good choice for adversary")
-        break
-print("<<<================>>>")
+def Is_There_Good_Choice(n,k):
+    for j in tqdm(range(n)):
+        w = sample(num_elements, k)
+        if ListPinSpan(w):
+            counter=True
+            print("The set ",w, "is a good choice for adversary of length ", len(w))
+            break
+
+
+
+Is_There_Good_Choice(3000,9)
+
+#global counter
+#counter=True
+#j=2000
+#while (counter):
+#    w = sample(num_elements,j)
+#    if ListPinSpan(w):
+#        counter = True
+#        print("The set ", w, "is a good choice for adversary")
+#        break
