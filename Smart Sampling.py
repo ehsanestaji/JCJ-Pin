@@ -54,42 +54,49 @@ def PinSpan(List):
     WrongDigit.clear()
     return swapErrors(new_list).union(WrongDigitErrorFull(new_list))
 
-#print("=====",PinSpan([1,2,3]),"=====", len(PinSpan([1,2,3])))
-
-
-
 import itertools
 def findsubsets(s, n):
     return list(itertools.combinations(s, n))
 
-######## Here we declare the length of PINs
-k=3
+####### Here we declare the length of PINs
+k=5
 #######
-
-
 num_elements=[]
 for num in range(10**k):
     num_elements.append(pin_rep(num,k))
-
-
-#print(num_elements)
-#w=findsubsets(num_elements,3)
-#print(type(w[1]))
-#print(len(w))
-#w=sample(num_elements,10)
-#print(w)
-
 
 def ListPinSpan(List):
     A=set()
     for j in range(len(List)):
         A = A.union(PinSpan(list(List[j])))
-    #print(len(A))
     if len(A)>=10**k:
         return True
     else:
         return False
 
+Basis=set()
+for i in range(100000):
+    if (len(num_elements)!=0):
+        Basis=Basis.union(sample(num_elements,1))
+        A=set()
+        List=list(Basis)
+        for j in range(len(Basis)):
+            A = A.union(PinSpan(list(List[j])))
+        num_elements=list(set(num_elements)-A)
+        #print("Step i=",i+1)
+        #print("Current Basis:", Basis)
+        print("The size of PIN space spanned by current Basis:", len(A),"<><>", i+1)
+        #print("##############################################################")
+
+    #for j in range(len(List)):
+    #    A = set()
+    #    A = A.union(PinSpan(list(List[j])))
+    #    print(A, "======",len(A))
+    #if (len(A)==1000):
+    #    print("The basis is" ,Basis)
+    #else:
+    #    num_elements=list(set(num_elements)-A)
+    #    print("<<<<<<<", A, ">>>>>>", len(A),len(num_elements))
 
 def Is_There_Good_Choice(n,k):
     for j in tqdm(range(n)):
@@ -98,17 +105,4 @@ def Is_There_Good_Choice(n,k):
             counter=True
             print("The set ",w, "is a good choice for adversary of length ", len(w))
             break
-
-
-
-Is_There_Good_Choice(1000000,83)
-
-#global counter
-#counter=True
-#j=2000
-#while (counter):
-#    w = sample(num_elements,j)
-#    if ListPinSpan(w):
-#        counter = True
-#        print("The set ", w, "is a good choice for adversary")
-#        break
+#Is_There_Good_Choice(1000,150)
