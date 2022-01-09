@@ -63,7 +63,7 @@ def findsubsets(s, n):
     return list(itertools.combinations(s, n))
 
 ######## Here we declare the length of PINs
-k=3
+k=2
 #######
 
 
@@ -101,14 +101,14 @@ def Is_There_Good_Choice(n,k):
 
 
 
-Is_There_Good_Choice(1000000,83)
+#Is_There_Good_Choice(1000000,83)
 
 #global counter
-#counter=True
-#j=2000
-#while (counter):
-#    w = sample(num_elements,j)
-#    if ListPinSpan(w):
-#        counter = True
-#        print("The set ", w, "is a good choice for adversary")
-#        break
+counter=True
+j=100
+while (counter):
+    w = sample(num_elements,j)
+    if ListPinSpan(w):
+        counter = True
+        print("The set ", len(w), "is a good choice for adversary")
+        break

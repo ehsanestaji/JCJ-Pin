@@ -57,6 +57,9 @@ def PinSpan(List):
     WrongDigit.clear()
     return swapErrors(new_list).union(WrongDigitErrorFull(new_list))
 
+
+print(len(PinSpan([1,2])))
+
 import itertools
 def findsubsets(s, n):
     return list(itertools.combinations(s, n))
@@ -68,8 +71,8 @@ for num in range(100):
 
 
 
-print(num_elements)
-w=findsubsets(num_elements,)
+#print(num_elements)
+#w=findsubsets(num_elements,8)
 #print(len(w))
 
 def ListPinSpan(List):
@@ -81,12 +84,12 @@ def ListPinSpan(List):
     else:
         return False
 
-for j in tqdm(range(len(w))):
+#for j in tqdm(range(len(w))):
     #print(j, " of ", len(w))
-    if ListPinSpan(w[j]):
-        print("The set ",w[j], "is a good choice for adversary")
-        break
-print("<<<================>>>")
+#    if ListPinSpan(w[j]):
+#        print("The set ",w[j], "is a good choice for adversary")
+#        break
+#print("<<<================>>>")
 
 # Now for the final step I am going to define aa function that checks is there any a good choice for a PIN's of
 # of length n and size k

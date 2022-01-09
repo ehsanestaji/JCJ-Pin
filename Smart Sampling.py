@@ -49,17 +49,29 @@ def WrongDigitErrorFull(List):
         WrongDigitErrors(new_list,i)
     return WrongDigit
 
+#def PinSpan(List):
+#    new_list = copy.deepcopy(List)
+#    WrongDigit.clear()
+#    return swapErrors(new_list).union(WrongDigitErrorFull(new_list))
+
+
 def PinSpan(List):
     new_list = copy.deepcopy(List)
-    WrongDigit.clear()
-    return swapErrors(new_list).union(WrongDigitErrorFull(new_list))
+    #WrongDigit.clear()
+    return swapErrors(new_list)
+
+
+
+
+#w=[1,2]
+#print(PinSpan(w),"====",len(PinSpan(w)))
 
 import itertools
 def findsubsets(s, n):
     return list(itertools.combinations(s, n))
 
 ####### Here we declare the length of PINs
-k=5
+k=4
 #######
 num_elements=[]
 for num in range(10**k):
@@ -69,24 +81,62 @@ def ListPinSpan(List):
     A=set()
     for j in range(len(List)):
         A = A.union(PinSpan(list(List[j])))
+    print(A,"====",len(A))
     if len(A)>=10**k:
         return True
     else:
         return False
 
+#ListPinSpan([[0,1],[2,3],[4,5],[6,7],[8,9],[1,0],[3,2],[5,4]])
+
 Basis=set()
-for i in range(100000):
-    if (len(num_elements)!=0):
-        Basis=Basis.union(sample(num_elements,1))
-        A=set()
-        List=list(Basis)
+#for i in range(10**k):
+#    if (len(num_elements)!=0):
+#        Basis=Basis.union(sample(num_elements,1))
+#        A=set()
+#        List=list(Basis)
+#        for j in range(len(Basis)):
+#            A = A.union(PinSpan(list(List[j])))
+#        num_elements=list(set(num_elements)-A)
+#        #print("Step i=",i+1)
+#        #print("Current Basis:", Basis)
+#        if len(A)==10**k:
+#            print("The size of PIN space spanned by current Basis:", len(A),"<><>", i+1)
+#        #print("##############################################################")
+Basis = set()
+for i in range(10 ** k):
+    if (len(num_elements) != 0):
+        #print("===",i,"====")
+        Basis = Basis.union(sample(num_elements, 1))
+        A = set()
+        List = list(Basis)
         for j in range(len(Basis)):
             A = A.union(PinSpan(list(List[j])))
-        num_elements=list(set(num_elements)-A)
-        #print("Step i=",i+1)
-        #print("Current Basis:", Basis)
-        print("The size of PIN space spanned by current Basis:", len(A),"<><>", i+1)
-        #print("##############################################################")
+        num_elements = list(set(num_elements) - A)
+        # print("Step i=",i+1)
+        # print("Current Basis:", Basis)
+        print("The size of PIN space spanned by current Basis:", len(A), "<><>", i + 1)
+        #if len(A)==10**k:
+        #    print(i+1)
+0
+for g in range(0):
+    for num in range(10 ** k):
+        num_elements.append(pin_rep(num, k))
+    Basis = set()
+    for i in range(10 ** k):
+        if (len(num_elements) != 0):
+            Basis = Basis.union(sample(num_elements, 1))
+            A = set()
+            List = list(Basis)
+            for j in range(len(Basis)):
+                A = A.union(PinSpan(list(List[j])))
+            num_elements = list(set(num_elements) - A)
+            # print("Step i=",i+1)
+            # print("Current Basis:", Basis)
+            if len(A)==10**k:
+                print(i+1)
+                #print("The size of PIN space spanned by current Basis:", len(A), "<><>", i + 1)
+            # print("##############################################################")
 
     #for j in range(len(List)):
     #    A = set()
@@ -105,4 +155,4 @@ def Is_There_Good_Choice(n,k):
             counter=True
             print("The set ",w, "is a good choice for adversary of length ", len(w))
             break
-#Is_There_Good_Choice(1000,150)
+#Is_There_Go od_Choice(1000,150)
