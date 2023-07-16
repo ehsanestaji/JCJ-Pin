@@ -1,4 +1,4 @@
-# PIN Error Generator
+# PIN-JCJ Security Analysis 
 
 This Python script generates all possible combinations of PIN errors. It uses simple permutations and swaps, and simulates erroneous user input, such as swapping adjacent digits or inputting wrong digits.
 
